@@ -102,4 +102,21 @@ client.on('message', message =>{
     }
 });
 
+client.on("message", message => {
+    var args = message.content.split(" ");
+    var ownerid = "436918120184021012";// ايدي اونر البوت
+    if(args[0] == prefix + "exit"){
+        if(message.author.id == ownerid){
+        if(!args[1]){
+            return message.reply("`"+args[0]+" <server id>`");
+        }
+        var findserver = client.guilds.cache.find(gld => gld.id == args[1]);
+        if(!findserver) {
+            return message.reply("i can't find the guild");
+        }
+        findserver.leave()
+        }
+    }
+});
+
 client.login(process.env.BOT_TOKEN);
