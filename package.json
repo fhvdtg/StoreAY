@@ -7,6 +7,7 @@
     "node": "8.x",
     "discord.js": "^11.3.2",
     "ffmpeg": "^0.0.4",
+    "canvas": "^2.6.1",
     "ffmpeg-binaries": "^4.0.0",
     "get-youtube-id": "^1.0.0",
     "common-tags": "^1.8.0",
