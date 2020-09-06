@@ -366,7 +366,7 @@ message.channel.send(embed);
 
 });
 
-client.on('raw', packet => {
+/**client.on('raw', packet => {
 if(!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
 if (packet.t == 'MESSAGE_REACTION_ADD') {
 if(packet.d.message_id == '752288614582583408') { // ايدي المسج
@@ -397,6 +397,6 @@ channel.guild.createChannel(`ticket-${u.username}`,
 }) }
  }
 }
-});
+});**/
 
 client.login(process.env.BOT_TOKEN);
