@@ -115,4 +115,21 @@ channel.guild.createChannel(`ticket-${u.username}`,
 }
 });
 
+/**client.on("message", message => {
+  if (message.content.startsWith("Site")) {
+    let embd = new Discord.RichEmbed()
+      .setColor('RED')
+      .setDescription("hello")
+    message.channel.send(embd)
+  }
+})**/
+
+client.on('guildMemberAdd', mem => {
+let gg = mem.guild.roles.find(hh => hh.name.includes('StoreAY,'));
+if(!gg) return
+mem.addRole(gg).catch(gg => console.log(gg.message))
+});
+
+
+
 client.login(process.env.BOT_TOKEN);
