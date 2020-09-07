@@ -15,6 +15,10 @@ const gif = require("gif-search");
 const Canvas = require("canvas");
 const pretty = require("pretty-ms")
 const credits = JSON.parse(fs.readFileSync('./credits.json'));
+const fs = require(`fs`);
+const ms = require(`ms`);
+
+client.crediter = require("./crediter.json");
 
 const client = new Discord.Client();
 var prefix = "!";
@@ -864,5 +868,140 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+
+client.on("message",omarx => {
+    if(!omarx.guild) return;
+    if(omarx.content.toLowerCase().split(" ")[0] === "credits")
+    {
+      let mention = omarx.mentions.members.first();
+      
+      let two = omarx.content.split(" ")[2];
+      if(!two)
+      {
+        if(!mention)
+        {
+          if(!client.crediter[omarx.author.id])
+          {
+            client.crediter[omarx.author.id] = {
+              credits:3,
+              daily: Date.now()
+            }
+            fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+              if(err) throw err;
+            })
+          
+          }
+          omarx.channel.send(`:credit_card: ${omarx.author.username}, Your Credits Is: ${client.crediter[omarx.author.id].credits}`);
+ 
+        }else if(mention)
+        {
+          if(mention.user.bot || omarx.author.bot) return;
+          if(!client.crediter[mention.id])
+          {
+            client.crediter[mention.id] = {
+              credits:3,
+              daily: Date.now()
+            }
+            fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+              if(err) throw err;
+            })
+          
+          }
+          omarx.channel.send(`:credit_card: ${omarx.author.username}, ${mention.user.username}'s Credits Is: \`\`${client.crediter[mention.id].credits}\`\`$`);
+        }
+      }else if(two && mention)
+      {
+        if (!Number(parseInt(two))) {
+          return omarx.reply("**Must Send Some Numbers To Send To Him**")
+        }
+       if(mention.user.bot || omarx.author.bot) return;
+        if(!client.crediter[omarx.author.id])
+          {
+            client.crediter[omarx.author.id] = {
+              credits:3,
+              daily: Date.now()
+            }
+            fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+              if(err) throw err;
+            })
+          
+          }
+          if(!client.crediter[mention.id])
+          {
+            client.crediter[mention.id] = {
+              credits:3,
+              daily: Date.now()
+            }
+            fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+              if(err) throw err;
+            })
+          
+          }
+        if(!mention) return omarx.channel.send(`${omarx.author.username}, Must Mention Someone To Transfar To Him Credits`);
+        let num = parseInt(two);
+ 
+        if(client.crediter[omarx.author.id].credits < num) 
+          return omarx.channel.send(`${omarx.author.username}, Sorry But You Dont Have Enough Credits`);
+        let num1 = Math.ceil((num * 95) / 100);
+        client.crediter[omarx.author.id].credits = client.crediter[omarx.author.id].credits - num1;
+        client.crediter[mention.id].credits = client.crediter[mention.id].credits + num1;
+        fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+          if(err) throw err;
+        })
+        var embed = new Discord.RichEmbed()
+        .setTitle("New Successful Transaction Process")
+        .setDescription(`SENDER: ${omarx.author}
+        RECEIVER: ${mention}
+        PRICE: ${num1}
+        PRICE WITHOUT TAX: ${num}
+        `);
+        omarx.channel.send(embed);
+      }
+    }else if(omarx.content.toLowerCase().split(" ")[0] == "daily")
+    {
+        let rand = [320,242,542,235,653,934,245,762,124,764];
+        if(!client.crediter[omarx.author.id])
+          {
+            client.crediter[omarx.author.id] = {
+              credits:3,
+              daily: Date.now()
+            }
+            fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+              if(err) throw err;
+            })
+          
+          }
+        if(client.crediter[omarx.author.id].daily > Date.now())
+          return omarx.channel.send(`${omarx.author.username}, You Cant Do This Command Now Beacuse You Used This Command Early "Try Again Later"`)
+        let randomizer = rand[Math.floor(Math.random() * rand.length)];
+        client.crediter[omarx.author.id].credits = client.crediter[omarx.author.id].credits + randomizer;
+        client.crediter[omarx.author.id].daily = Date.now() + 86400000;
+        fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+          if(err) throw err;
+        })
+        var embed1 = new Discord.RichEmbed()
+        .setTitle("New Daily Process")
+        .setDescription(`FROM: ${omarx.author}
+        CURRENT CREDITS: ${client.crediter[omarx.author.id].credits}
+        RECEIVED CREDITS: ${randomizer}
+        `)
+        omarx.channel.send(embed1)
+    }
+});
+ 
+const down = new Set();
+client.on('message',deep =>{
+    if(down.has(deep.author.id)) return;
+    down.add(deep.author.id);
+    
+    setTimeout(() => {
+      down.delete(deep.author.id);
+      client.crediter[deep.author.id].credits = client.crediter[deep.author.id].credits + 1;
+      fs.writeFileSync("./crediter.json",JSON.stringify(client.crediter, null, 4), err => {
+        if(err) throw err;
+      })
+    }, 10000);
+    
+})
 
 client.login(process.env.BOT_TOKEN);
