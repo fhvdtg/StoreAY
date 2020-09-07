@@ -201,7 +201,7 @@ if(e)throw e;
 })
 }
 }
-});*// By: FireKing , Codes**/
+});// By: FireKing , Codes**/
 
 /*client.on('message',async message => {
   var room;
@@ -833,11 +833,11 @@ if(message.content =='!members') // Mdax77x | Toxic Codes CopyRight
 var E2Mdax = new Discord.RichEmbed()
  
 .setTitle('Members Info:')
-.addField('**Members Count: ** [ ${message.guild.memberCount} ]**__`,true) // Mdax77x | Toxic Codes CopyRight
-.addField('Online Members:',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+.addField('**Members Count: ${message.guild.memberCount}`,true) // Mdax77x | Toxic Codes CopyRight
+.addField('Online Members: ',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
 .addField('Offline Members: ',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
 .setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
-.addField('StoreAY | Offical Discord Support Team, ','-')
+.addField('StoreAY | Offical Discord Support Team, ',true)
 .setColor('RANDOM')
 message.channel.send(E2Mdax);
 });
