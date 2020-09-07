@@ -50,17 +50,16 @@ console.log("====================================")
 });
 
 client.on('message', message => {
-    if (message.content === '!ticket - storeay') {
-        let helpEmbed = new Discord.RichEmbed()
-        .setColor('#609da5')
-        .setThumbnail(client.user.avatarURL)
+    if (message.content === '!say ticket message') {
+        let ticketEmbed = new Discord.RichEmbed()
+        .setColor('WHITE')
         .setAuthor('StoreAY', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png', 'http://storeay.is-best.net')
         .setTitle('Support')
         .setDescription('Click on 📧 To Open Your Ticket')
         .addField('Our Support Team:', '- MrBloods', '- Ajh')
         .setThumbnail('https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
         .setFooter('SStoreAY Support Team', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png');
-      message.channel.send(helpEmbed);
+      message.channel.send(ticketEmbed);
     }
 });
           
