@@ -48,20 +48,6 @@ console.log("2")
 console.log("1")
 console.log("====================================")
 });
-
-client.on('message', message => {
-    if (message.content === '!say ticket message') {
-        let ticketEmbed = new Discord.RichEmbed()
-        .setTitle('Support'
-        .setDescription('Click on 📧 To Open Your Ticket')
-        .setColor('WHITE')
-        .setFooter('SStoreAY Support Team', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
-        .setThumbnail('https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
-        .setAuthor('StoreAY', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png', 'http://storeay.is-best.net')
-        .addField('Our Support Team:', '- MrBloods', '- Ajh');
-      message.channel.send(ticketEmbed);
-    }
-});
           
 /**client.on('message', msg => {
        if(!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('**لا تملك الصلاحيات الكافيه**' );
