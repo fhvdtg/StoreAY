@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 var prefix ="!";
 
-client.on('ready', function(){
+/**client.on('ready', function(){
     var ms = 10000 ;
     var setGame = ['StoreAY','BUY NOW', 'StoreAY.Is-Best.Net'];
     var i = -1;
@@ -29,6 +29,17 @@ console.log("3")
 console.log("2")
 console.log("1")
 console.log("====================================")
+});**/
+
+client.on("ready", () => {
+client.user.setActivity(`${prefix}help | ${client.guilds.size} Servers`)
+}
+          
+client.on('message', msg => {
+       if(!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('**لا تملك الصلاحيات الكافيه**' );
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
 });
 
 client.on('raw', packet => {
