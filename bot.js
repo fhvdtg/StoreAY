@@ -842,7 +842,7 @@ var E2Mdax = new Discord.RichEmbed()
 message.channel.send(E2Mdax);
 });
 
-client.on("message", async message => {
+/*client.on("message", async message => {
             if(!message.channel.guild) return;
             var prefix = "!";
         if(message.content.startsWith(prefix + 'invites')) {
@@ -946,7 +946,7 @@ client.on('message', msg => {
         }    
     }
 }
-});
+});*/
 
 client.on('ebnklb',function(ebnklb) {
     
