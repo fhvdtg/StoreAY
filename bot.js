@@ -329,7 +329,7 @@ client.on('message', message => {
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-client.on('messageDelete', message => {
+/**client.on('messageDelete', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
     if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -855,7 +855,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
  
         logChannel.send(voiceLeave);
     }
-});
+});**/
 
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
