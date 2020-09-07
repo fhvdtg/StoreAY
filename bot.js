@@ -15,8 +15,6 @@ const gif = require("gif-search");
 const Canvas = require("canvas");
 const pretty = require("pretty-ms")
 const credits = JSON.parse(fs.readFileSync('./credits.json'));
-const fs = require(`fs`);
-const ms = require(`ms`);
 
 const client = new Discord.Client();
 var prefix = "!";
