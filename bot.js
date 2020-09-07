@@ -833,7 +833,7 @@ if(message.content =='!members') // Mdax77x | Toxic Codes CopyRight
 var E2Mdax = new Discord.RichEmbed()
  
 .setTitle('Members Info:')
-.addField('**Members Count: ${message.guild.memberCount}`,true) // Mdax77x | Toxic Codes CopyRight
+.addField('Members Count: ',` ${message.guild.memberCount}`,true) // Mdax77x | Toxic Codes CopyRight
 .addField('Online Members: ',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
 .addField('Offline Members: ',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
 .setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
