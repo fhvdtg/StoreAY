@@ -59,7 +59,7 @@ console.log("====================================")
 client.on('raw', packet => {
 if(!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
 if (packet.t == 'MESSAGE_REACTION_ADD') {
-if(packet.d.message_id == '752288614582583408') { // ايدي المسج
+if(packet.d.message_id == '752490128307650571') { // ايدي المسج
 let emoji = packet.d.emoji.id ? `${packet.d.emoji.name}:${packet.d.emoji.id}` : packet.d.emoji.name;
 if(emoji == '📧'){ // الايموجي الي بيضغط عليه عشان يسوي تكت
 let u = client.users.get(packet.d.user_id);
