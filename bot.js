@@ -163,7 +163,7 @@ client.on('guildCreate', guild => {
         guild.owner.send(embed)
   });
 
-client.on('message',async message => {
+/**client.on('message',async message => {
 if(message.author.bot || message.channel.type === 'dm') return;
 let args = message.content.split(' ');
 let author = message.author.id;
@@ -239,7 +239,7 @@ if(e)throw e;
 })
 }
 }
-}); // By: FireKing , Codes
+}); // By: FireKing , Codes**/
 
 client.on('message',async message => {
   var room;
