@@ -1,8 +1,25 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
+const Discord = require('discord.js');
+const Util = require('discord.js');
+const getYoutubeID = require('get-youtube-id');
+const fetchVideoInfo = require('youtube-info');
+const YouTube = require('simple-youtube-api');
+const SQLite = require('sqlite'); // SQLpackage
+const path = require('path'); // PATHpackage
+const moment = require('moment');
+const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
+const queue = new Map();
+const ytdl = require('ytdl-core');
+const fs = require('fs');
+const FFMPEG = require('ffmpeg');
+const gif = require("gif-search");
+const Canvas = require("canvas");
+const pretty = require("pretty-ms")
 const credits = JSON.parse(fs.readFileSync('./credits.json'));
 
-var prefix ="!";
+const client = new Discord.Client();
+var prefix = "!";
+var adminprefix = '!'
+const developers = ["436918120184021012"]
 
 client.on('ready', function(){
     var ms = 10000 ;
