@@ -201,7 +201,7 @@ if(e)throw e;
 })
 }
 }
-}); // By: FireKing , Codes**/
+});*// By: FireKing , Codes**/
 
 /*client.on('message',async message => {
   var room;
@@ -832,12 +832,12 @@ client.on('message',message =>{ // MdAx77x CopyRght
 if(message.content =='!members') // Mdax77x | Toxic Codes CopyRight
 var E2Mdax = new Discord.RichEmbed()
  
-.setTitle('==========🌷| Members info==========')
-.addField('** Members count👥.:**',`__** [ ${message.guild.memberCount} ]**__`,true) // Mdax77x | Toxic Codes CopyRight
-.addField('📗|online',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
-.addField('📓| offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
+.setTitle('Members Info:')
+.addField('**Members Count: ** [ ${message.guild.memberCount} ]**__`,true) // Mdax77x | Toxic Codes CopyRight
+.addField('Online Members:',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+.addField('Offline Members: ',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
 .setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
-.addField('StoreAY | Offical Discord Support Team, ',true)
+.addField('StoreAY | Offical Discord Support Team, ','-')
 .setColor('RANDOM')
 message.channel.send(E2Mdax);
 });
