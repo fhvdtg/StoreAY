@@ -18,8 +18,6 @@ const credits = JSON.parse(fs.readFileSync('./credits.json'));
 const fs = require(`fs`);
 const ms = require(`ms`);
 
-client.crediter = require("./crediter.json");
-
 const client = new Discord.Client();
 var prefix = "!";
 var adminprefix = '!'
@@ -869,6 +867,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+client.crediter = require("./crediter.json");
 client.on("message",omarx => {
     if(!omarx.guild) return;
     if(omarx.content.toLowerCase().split(" ")[0] === "credits")
