@@ -130,6 +130,23 @@ if(!gg) return
 mem.addRole(gg).catch(gg => console.log(gg.message))
 });
 
-
+const guild = client.guilds.get("621834641367629827");
+const channelCount = client.channels.get("629956274917867521");
+ 
+client.on("guildMemberAdd", (user) => {
+ 
+const membercount = guild.members.size;
+ 
+channelCount.setName(`Member Count : ${membercount}.`);
+ 
+});
+ 
+client.on("guildMemberRemove", (user) => {
+ 
+const membercount = guild.members.size;
+ 
+channelCount.setName(`Member Count : ${membercount}.`);
+ 
+});
 
 client.login(process.env.BOT_TOKEN);
