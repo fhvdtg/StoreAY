@@ -48,6 +48,21 @@ console.log("2")
 console.log("1")
 console.log("====================================")
 });
+
+client.on('message', message => {
+    if (message.content === '!ticket - storeay') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setColor('#609da5')
+        .setThumbnail(client.user.avatarURL)
+        .setAuthor('StoreAY', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png', 'http://storeay.is-best.net')
+        .setTitle('Support')
+        .setDescription('Click on 📧 To Open Your Ticket')
+        .addField('Our Support Team:', '- MrBloods', '- Ajh')
+        .setThumbnail('https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
+        .setFooter('SStoreAY Support Team', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png');
+      message.channel.send(helpEmbed);
+    }
+});
           
 /**client.on('message', msg => {
        if(!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('**لا تملك الصلاحيات الكافيه**' );
