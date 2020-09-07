@@ -14,7 +14,7 @@ const FFMPEG = require('ffmpeg');
 const gif = require("gif-search");
 const Canvas = require("canvas");
 const pretty = require("pretty-ms")
-const credits = JSON.parse(fs.readFileSync('./credits.json'));
+/**onst credits = JSON.parse(fs.readFileSync('./credits.json'));**/
 
 const client = new Discord.Client();
 var prefix = "!";
@@ -241,7 +241,7 @@ if(e)throw e;
 }
 }); // By: FireKing , Codes**/
 
-client.on('message',async message => {
+/*client.on('message',async message => {
   var room;
   var title;
   var duration;
@@ -310,7 +310,7 @@ client.on('message',async message => {
       });
     });
   }
-});
+});*/
 
 client.on('message', message => {
   if (message.channel.id === "752184462477099179") {
