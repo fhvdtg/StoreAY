@@ -98,50 +98,6 @@ channel.guild.createChannel(`ticket-${u.username}`,
   }
 })**/
 
-client.on('guildMemberAdd', mem => {
-let gg = mem.guild.roles.find(hh => hh.name.includes('StoreAY,'));
-if(!gg) return
-mem.addRole(gg).catch(gg => console.log(gg.message))
-});
-
-const guild = client.guilds.get("621834641367629827");
-const channelCount = client.channels.get("629956274917867521");
- 
-client.on("guildMemberAdd", (user) => {
- 
-const membercount = guild.members.size;
- 
-channelCount.setName(`Member Count : ${membercount}.`);
- 
-});
- 
-client.on("guildMemberRemove", (user) => {
- 
-const membercount = guild.members.size;
- 
-channelCount.setName(`Member Count : ${membercount}.`);
- 
-});
-
- client.on("guildMemberAdd", member => {
-  let welcomer = member.guild.channels.find("name","join");
-        if(!welcomer) return;
-        if(welcomer) {
-           moment.locale('ar-ly');
-           var h = member.user;
-          let norelden = new Discord.RichEmbed()
-          .setColor('PINK')
-          .setThumbnail(h.avatarURL)
-          .setAuthor(h.username,h.avatarURL)
-          .addField('وقت انشاء حسابك بالديسكورد: ',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
-           .addField('متى اخر مرة دخلت سيرفرنا: ',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true) 
-           .setFooter(`${h.tag}`,"https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png")
-       welcomer.send({embed:norelden});          
-                 
-   
-        }
-        });
-
 client.on('message', msg => {
   if(msg.content === '!invite')
   msg.reply('https://discord.com/api/oauth2/authorize?client_id=752185674236559501&permissions=8&scope=bot')
@@ -162,6 +118,12 @@ client.on('guildCreate', guild => {
     .setDescription(`**Thank you for adding the bot to your server. **Bot By MrBloods**`)
         guild.owner.send(embed)
   });
+
+client.on('guildMemberAdd', mem => {
+let gg = mem.guild.roles.find(hh => hh.name.includes('StoreAY,'));
+if(!gg) return
+mem.addRole(gg).catch(gg => console.log(gg.message))
+});
 
 /**client.on('message',async message => {
 if(message.author.bot || message.channel.type === 'dm') return;
