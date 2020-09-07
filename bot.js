@@ -842,7 +842,7 @@ var E2Mdax = new Discord.RichEmbed()
 message.channel.send(E2Mdax);
 });
 
-/*client.on("message", async message => {
+client.on("message", async message => {
             if(!message.channel.guild) return;
             var prefix = "!";
         if(message.content.startsWith(prefix + 'invites')) {
@@ -946,16 +946,6 @@ client.on('message', msg => {
         }    
     }
 }
-});*/
-
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith(`<@${client.user.id}>`)) {
-        ebnklb.channel.send('Hey Im **StoreAY | Offical Discord Bot,** Developed By:`MrBloods
-#2729`')
-        ebnklb.channel.send('My Prefix `!`')
-
-    }
 });
 
 
