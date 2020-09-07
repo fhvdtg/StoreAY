@@ -827,6 +827,136 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+client.on('message',message =>{ // MdAx77x CopyRght
+    if(!message.channel.guild) return;
+if(message.content =='!members') // Mdax77x | Toxic Codes CopyRight
+var E2Mdax = new Discord.RichEmbed()
+ 
+.setTitle('==========🌷| Members info==========')
+.addField('** Members count👥.:**',`__** [ ${message.guild.memberCount} ]**__`,true) // Mdax77x | Toxic Codes CopyRight
+.addField('📗|online',` ${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+.addField('📓| offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) // Mdax77x | Toxic Codes CopyRight
+.setFooter(`Requested By | ${message.author.tag}`) // Mdax77x | Toxic Codes
+.addField('StoreAY | Offical Discord Support Team, ',true)
+.setColor('RANDOM')
+message.channel.send(E2Mdax);
+});
+
+client.on("message", async message => {
+            if(!message.channel.guild) return;
+            var prefix = "!";
+        if(message.content.startsWith(prefix + 'invites')) {
+        var nul = 0
+        var guild = message.guild
+        await guild.fetchInvites()
+            .then(invites => {
+             invites.forEach(invite => {
+                if (invite.inviter === message.author) {
+                     nul+=invite.uses
+                    }
+                });
+            });
+          if (nul > 0) {
+              console.log(`\n${message.author.tag} has ${nul} invites in ${guild.name}\n`)
+              var embed = new Discord.RichEmbed()
+                  .setColor("#000000")
+                    .addField(`${message.author.username}`, `لقد قمت بدعوة **${nul}** شخص`)
+                          message.channel.send({ embed: embed });
+                      return;
+                    } else {
+                       var embed = new Discord.RichEmbed()
+                        .setColor("#000000")
+                        .addField(`${message.author.username}`, `لم تقم بدعوة أي شخص لهذة السيرفر`)
+
+                       message.channel.send({ embed: embed });
+                        return;
+                    }
+        }
+        if(message.content.startsWith(prefix + 'invite-codes')) {
+let guild = message.guild
+message.channel.send(":postbox: **لقد قمت بأرسال جميع روابط الدعوات التي قمت بأنشائها في الخاص**")
+guild.fetchInvites()
+.then(invites => {
+invites.forEach(invite => {
+if (invite.inviter === message.author) {
+codes.push(`discord.gg/${invite.code}`)
+}
+})
+}).then(m => {
+if (codes.length < 0) {
+    var embed = new Discord.RichEmbed()
+.setColor("#000000")
+.addField(`Your invite codes in ${message.guild.name}`, `You currently don't have any active invites! Please create an invite and start inviting, then you will be able to see your codes here!`)
+message.author.send({ embed: embed });
+return;
+} else {
+    var embed = new Discord.RichEmbed()
+.setColor("#000000")
+.addField(`Your invite codes in ${message.guild.name}`, `Invite Codes:\n${codes.join("\n")}`)
+message.author.send({ embed: embed });
+return;
+}
+})
+}
+
+});
+
+client.on('message', msg => {
+	var  prefix = "!";
+ if (msg.content.startsWith(prefix + 'cal')) {
+    let args = msg.content.split(" ").slice(1);
+        const question = args.join(' ');
+    if (args.length < 1) {
+        msg.reply('Specify a equation, please.');
+} else {    let answer;
+    try {
+        answer = math.eval(question);
+    } catch (err) {
+        msg.reply(`Error: ${err}`);
+    }
+    
+    const embed = new Discord.RichEmbed()
+    .addField("**Input**: ",`**${question}**`, true)
+    .addField("**Output**: ",`**${answer}**`, true)
+    msg.channel.send(embed)
+    }
+};
+});
+
+client.on('message', msg => {
+	var prefix = "!";
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
+
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send("***```Supply A Number 👌```***").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("```Cleard: " + textxt + "\n Messages```").then(m => m.delete(3000));
+        }    
+    }
+}
+});
+
+client.on('ebnklb',function(ebnklb) {
+    
+    if(ebnklb.content.startsWith(`<@${client.user.id}>`)) {
+        ebnklb.channel.send('Hey Im **StoreAY | Offical Discord Bot,** Developed By:`MrBloods
+#2729`')
+        ebnklb.channel.send('My Prefix `!`')
+
+    }
+});
 
 
 client.login(process.env.BOT_TOKEN);
