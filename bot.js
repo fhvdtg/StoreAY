@@ -52,13 +52,13 @@ console.log("====================================")
 client.on('message', message => {
     if (message.content === '!say ticket message') {
         let ticketEmbed = new Discord.RichEmbed()
-        .setColor('WHITE')
-        .setAuthor('StoreAY', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png', 'http://storeay.is-best.net')
-        .setTitle('Support')
+        .setTitle('Support'
         .setDescription('Click on 📧 To Open Your Ticket')
-        .addField('Our Support Team:', '- MrBloods', '- Ajh')
+        .setColor('WHITE')
+        .setFooter('SStoreAY Support Team', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
         .setThumbnail('https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png')
-        .setFooter('SStoreAY Support Team', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png');
+        .setAuthor('StoreAY', 'https://cdn.discordapp.com/attachments/679390274295955467/751829922237907013/storeay.png', 'http://storeay.is-best.net')
+        .addField('Our Support Team:', '- MrBloods', '- Ajh');
       message.channel.send(ticketEmbed);
     }
 });
