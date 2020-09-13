@@ -89,6 +89,39 @@ channel.guild.createChannel(`ticket-${u.username}`,
 }
 });
 
+client.on('raw', packet => {
+if(!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
+if (packet.t == 'MESSAGE_REACTION_ADD') {
+if(packet.d.message_id == '754760105836150855') { // ايدي المسج
+let emoji = packet.d.emoji.id ? `${packet.d.emoji.name}:${packet.d.emoji.id}` : packet.d.emoji.name;
+if(emoji == '📧'){ // الايموجي الي بيضغط عليه عشان يسوي تكت
+let u = client.users.get(packet.d.user_id);
+let channel = client.channels.get(packet.d.channel_id);
+if(channel.type == "dm"||!channel.guild) return; // ._.
+channel.fetchMessage(packet.d.message_id).then(message => {
+let re = message.reactions.get(emoji);
+re.remove(u); // عشان بعد ما يحط الايموجي ينشال
+let CH = message.guild.channels.find(r => r.id == '754760499106938981'); // ايدي الكاتوجري الي بتنحط تحتها التكتات
+if(!CH) return;
+channel.guild.createChannel(`ticket-${u.username}`,
+{
+  type: 'text',parent:CH,reason:'Reaction Tickets System.',
+  permissionOverwrites: [{
+    id:  channel.guild.id,
+    deny: ['READ_MESSAGES']
+  },{
+    id: u.id,
+    allow: ['SEND_MESSAGES','READ_MESSAGES','ATTACH_FILES','READ_MESSAGE_HISTORY']
+  },{
+    id: '622121717363638282', // ايدي رتبه السبورت
+    allow: ['SEND_MESSAGES','READ_MESSAGES','ATTACH_FILES','READ_MESSAGE_HISTORY']
+  }]
+})
+}) }
+ }
+}
+});
+
 /**client.on("message", message => {
   if (message.content.startsWith("Site")) {
     let embd = new Discord.RichEmbed()
@@ -276,6 +309,15 @@ if(e)throw e;
 
 client.on('message', message => {
   if (message.channel.id === "752184462477099179") {
+    message.react('📧')
+      .then(() => {
+        message.react('')
+      });
+  }
+});
+
+client.on('message', message => {
+  if (message.channel.id === "754755832532566216") {
     message.react('📧')
       .then(() => {
         message.react('')
