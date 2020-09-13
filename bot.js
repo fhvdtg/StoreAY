@@ -307,14 +307,14 @@ if(e)throw e;
   }
 });*/
 
-client.on('message', message => {
+/*client.on('message', message => {
   if (message.channel.id === "752184462477099179") {
     message.react('📧')
       .then(() => {
         message.react('')
       });
   }
-});
+});*/
 
 client.on('message', message => {
   if (message.channel.id === "754755832532566216") {
@@ -333,7 +333,7 @@ client.on('message', message => {
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-/**client.on('messageDelete', message => {
+client.on('messageDelete', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
     if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return;
@@ -859,7 +859,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
  
         logChannel.send(voiceLeave);
     }
-});**/
+});
 
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
